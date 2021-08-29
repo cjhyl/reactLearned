@@ -1,0 +1,2 @@
+项目后台代码npm install后，不能运行npm start，会报错，然后.env文件中APP_PORT=8001值改为8001(反正不能为80，80的话貌似被windows默认占用了)，然后前端项目中REACT_APP_DEVLOPMENT_API_URL=http://localhost:8001/api，然后就能正常执行注册服务了。
+数据库查看注册的用户数据是：连接localost:27017->ecommerce->Collections->users

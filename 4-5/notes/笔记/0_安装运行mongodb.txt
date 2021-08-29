@@ -1,0 +1,9 @@
+因为是windows系统，使用教程资料中的安装包，按照教程一步步安装。
+添加环境变量后，没有立刻生效，需要重启后才能在命令行中运行mongo命令，不过应该有不重启刷新环境变量的命令。
+运行net stop mongodb和net stop mongodb发生系统错误5，拒绝访问，经查是权限问题，百度了cmd、powershell如何以管理员身份运行，然后解决了该问题。
+用教程资料中的安装包安装Robo 3T，mongodb的可视化软件。安装和运行正常。
+mongodb相关软件名：
+mac：robo3t-1.4.2-darwin-x86_64-8650949.dmg
+window:
+mongodb-windows-x86_64-4.4.1-signed.msi
+robo3t-1.4.2-windows-x86_64-8650949.exe

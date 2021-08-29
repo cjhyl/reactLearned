@@ -1,0 +1,25 @@
+import { applyMiddleware, createStore } from "redux";
+import createRootReducer from "./reducers";
+import { createHashHistory } from "history"
+import { routerMiddleware } from "connected-react-router";
+import createSagaMiddleware from "redux-saga"
+import rootSaga from "./saga";
+import { composeWithDevTools } from "redux-devtools-extension"
+
+export const history = createHashHistory()
+
+const sagaMiddleware = createSagaMiddleware()
+
+const store = createStore(
+  createRootReducer(history),
+  // 状态链接到浏览器调试工具
+  composeWithDevTools(
+    // routerMiddleware监听路由状态，路由状态更改时dispatch action
+    applyMiddleware(routerMiddleware(history), sagaMiddleware)
+  )
+  
+)
+
+sagaMiddleware.run(rootSaga)
+
+export default store

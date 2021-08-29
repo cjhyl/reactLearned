@@ -1,0 +1,9 @@
+开发gatsby数据转化插件：
+
+1. 在plugins文件夹中常见gatsby-transformer-xml文件夹
+2. 在插件文件夹中创建gatsby-node.js文件
+3. 在文件中导出onCreateNode方法用于构建gatsby查询节点
+4. 根据节点类型筛选xml节点node.internal.mediaType->application/xml
+5. 通过loadNodeContent方法读取节点中的数据
+6. 通过xml2js将xml数据转换为对象
+7. 将对象转换为gatsby查询节点

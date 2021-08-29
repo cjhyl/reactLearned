@@ -1,0 +1,49 @@
+1. 通过gatsby-source-filesystem将markdown文件数据读取到数据层
+2. 通过gatsby-transformer-remark将数据层中的原始markdown数据转换为js对象
+
+npm install gatsby-transformer-remark
+
+数据查询示例：
+query {
+  allMarkdownRemark {
+    nodes {
+      frontmatter {
+        date
+        title
+      }
+      html
+      id
+      fileAbsolutePath
+      internal {
+        type
+      }
+    }
+  }
+}
+internal.type为MarkdownRemark，可用于区分数据来源类型
+fileAbsolutePath为数据文件绝对路径
+
+构建md数据详情页：
+一、为md文件数据添加slug数据
+1. 在md文件中添加slug属性
+2. 嫌弃方法1繁琐，使用编程的方式添加，使用onCreateNode钩子函数，处理完成通过allMarkdownRemark->nodes->fileds->slug查询
+二、根据slug属性标识构建页面
+三、在模板页面中根据slug属性查询详情数据
+查询示例：
+query ($slug: String) {
+  markdownRemark(fields: {slug: {eq: $slug}}) {
+    html
+    frontmatter {
+      date
+      title
+    }
+  }
+}
+底部Query Variables可传入示例参数如：
+{
+	"slug": "gatsby"
+}
+
+
+处理markdown文件中的图片：
+gatsby-remark-images：属于gatsby-transformer-remark的子插件，处理markdown中的图片，以便可以在生产环境中使用

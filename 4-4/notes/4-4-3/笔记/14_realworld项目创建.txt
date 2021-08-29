@@ -1,0 +1,11 @@
+直接复制下面的命令运行：
+gatsby new realworld https://github.com/gatsbyjs/gatsby-starter-hello-world
+结果报错：
+Error: Command failed with exit code 128: git clone https://github.com/gatsbyjs/gatsby-starter-hello-world.git realwor
+  ld --recursive --depth=1
+想起之前创建gatsby时的经验，粘贴板的问题，于是：
+输入gatsby new realworld 
+然后复制https://github.com/gatsbyjs/gatsby-starter-hello-world，粘贴进命令行，运行。
+运行成功，开始下载模板。
+rm xxx//删除文件
+rm -rf xxx//删除文件夹

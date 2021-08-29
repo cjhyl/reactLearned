@@ -1,0 +1,5 @@
+gatsby插件分为三种：数据源插件(source)，数据转换插件(transformer)，功能插件(plugin)
+数据源插件：负责从应用外部获取数据，将数据同意放在gatsby数据层中
+数据转换插件：负责转换特性类型的数据的格式，比如将markdown文件中的内容转换为对象形式
+功能插件：为应用提供功能，比如通过插件让应用支持less或者TypeScript
+https://www.gatsbyjs.org/plugins/

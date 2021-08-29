@@ -1,0 +1,37 @@
+https://github.com/strapi/strapi
+创建项目：npx create-strapi-app 项目名称
+选择Quickstart
+报错，然后提示：
+Error while installing dependencies:
+提示：
+Oh, it seems that you encountered errors while installing dependencies in your project.
+Don't give up, your project was created correctly.
+Fix the issues mentioned in the installation errors and try to run the following command:
+
+进入项目目录输入npm install重新安装依赖
+报错：
+npm ERR! cb() never called!
+
+npm ERR! This is an error with npm itself. Please report this error at:
+npm ERR!     <https://npm.community>
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\Administrator.DESKTOP-SMIKUI2\AppData\Roaming\npm-cache\_logs\2021-05-25T07_56_53_148Z-debug.log
+PS F:\project\lagou\lg_lesson14\notes\4-4-3\code\cms>
+
+改用yarn install安装
+没有报错，安装成功。
+输入yarn start运行
+运行报错：
+Error: ENOENT: no such file or directory, open 'F:\project\lagou\lg_lesson14\notes\4-4-3\code\cms\build\index.html'
+应该是之前下载文件不完整导致的。
+
+删除之前的所有文件，使用官方网站https://github.com/strapi/strapi其他方式重新安装：
+yarn create strapi-app my-project --quickstart
+等待删除中，看文档，文档中关于node版本让我有些不安：
+NodeJS >= 10.16 <=14
+NPM >= 6.x
+我的node版本是14.15.4
+啊啊啊！等等！！我傻了，刚看了script指令，develop才是开发模式，start是用于运行build打包文件的命令。
+不过还是使用上面的指令安装strapi吧，经验，经验，经验就是这么来的。
+这次顺利安装、运行了。

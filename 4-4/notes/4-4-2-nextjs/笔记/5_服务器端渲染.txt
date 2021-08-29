@@ -1,0 +1,3 @@
+实现服务器端渲染，需要用到getServerSideProps方法。
+使用方式和getStaticProps一样。
+含有参数context，可使用context.query获取页面参数。

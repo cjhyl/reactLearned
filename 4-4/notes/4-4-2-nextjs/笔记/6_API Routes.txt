@@ -1,0 +1,8 @@
+API Routes 可以理解为接口，客户端向服务器端发送请求获取数据的接口。
+nextjs应用允许React开发者编写服务器端代码创建数据接口。
+
+实现步骤：
+1. 在pages/api文件夹中创建API Routes文件，比如user.js
+2. 在文件中默认导出请求处理函数，函数有两个参数，req为请求对象，res为响应对象
+3. 访问API Routes，比如http://localhost:3000/api/user
+不要再getStaticPaths或getStaticProps函数中访问API Routes，因为这两个函数就是在服务器端运行的，可以直接些服务器端代码。

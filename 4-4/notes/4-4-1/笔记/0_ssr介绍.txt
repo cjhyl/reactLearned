@@ -1,0 +1,5 @@
+ssr: Server Side Rendering，服务端渲染。服务端返回html，data和html在服务端渲染。
+与之相对的是客户端渲染csr:Client Side Rendering，服务器仅返回JSON数据，data和html在客户端渲染。
+客户端渲染的问题：
+1、首屏渲染时间长。
+2、页面结构为空，不利于SEO。

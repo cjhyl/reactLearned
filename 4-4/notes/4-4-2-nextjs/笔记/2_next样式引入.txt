@@ -1,0 +1,22 @@
+1. 内置style-jsx
+再next.js中内置了styled-jsx，它时一个CSS-in-JS库，允许再react组件中编写css，css仅作用于组件内部。
+<style jsx>{`
+  .demo {
+    color: red;
+  }
+`}</style>
+
+2. css模块
+通过使用css模块，允许将组件的css样式编写再单独的css文件中。
+cssm魔魁啊约定样式文件的名称必须为"组件文件名称.module.css"
+// index.module.css
+.p { color: green }
+//index.js
+import styles from './index.module.css'
+<div className={style.p}>aaa</div>
+
+3. 全局样式文件
+1. 在pages文件夹中新建_app.js文件并加入如下代码
+2. 在项目根目录下创建styles文件夹，并在其中创建global.css
+3. 在_app.js中通过import引入global.css
+4. 重新启动开发服务器

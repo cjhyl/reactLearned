@@ -1,0 +1,12 @@
+gatsby：一个静态站点生成器，官网：https://www.gatsbyjs.org
+静态站点优势：
+1. 访问速度快
+2. 更利于SEO
+3. 部署简单
+
+gatsby总览：
+1. 基于react和graphql，结合了webpack，babel，react-router等前端领域中最先进工具，开发人员开发体验号
+2. 采用数据层和UI层分离而不失SEO的现在前端开发模式，对SEO非常友好
+3. 数据预读取，在浏览器空闲的时候预先读取连接对应的页面内容，使静态页面又有SPA应用的用户体验，用户体验好
+4. 数据来源多样化：Headless CMS，markdown，API
+5. 功能插件化，gatsby中提供了丰富且功能强大的各种类型的插件，用什么装什么

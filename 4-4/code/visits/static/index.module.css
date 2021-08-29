@@ -1,0 +1,244 @@
+* {
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+}
+html,body {
+  background-color: #ffffff;
+  height: 100%;
+}
+#___gatsby,
+#gatsby-focus-wrapper{
+  height: 100%;
+}
+.root{width:100%;height:100%;}
+.bg {
+  min-width: 340px;
+  max-width: 564px;
+  height: 100%;
+  margin:0 auto;
+  display: flex;
+  align-items: center;
+}
+.visits {
+  width: 100%;
+  min-height: 128px;
+  max-height: 240px;
+  overflow: hidden;
+  text-align:center;
+  font-size: 0;
+}
+.item {
+  width: 112px;
+  height: 112px;
+  margin-bottom: 16px;
+  display: inline-block;
+  border-radius: 3px;
+  position: relative;
+  cursor: pointer;
+}
+.item:hover {
+  background-color: #f2f2f2;
+}
+.item>a{
+  width: 112px;
+  height: 112px;
+  display: block;
+  text-decoration: none;
+}
+.item .iconBg{
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.item .iconBg>div{
+  width: 48px;
+  height: 48px;
+  background-color: #e5e7e8;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.item .iconBg .icon{
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+.item .iconBg .default{
+  width: 28px;
+  height: 28px;
+  background-color: #c440a9;
+  border-radius: 14px;
+  line-height: 28px;
+  text-align: center;
+  font-size: 22px;
+  color: #ffffff;
+}
+.item .iconBg .add{
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  font-size: 24px;
+  color: #202124;
+}
+.item .titleBg{
+  width: 100%;
+  height: 32px;
+  padding: 0 12px;
+}
+.item .titleBg>div{
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  font-size: 12px;
+  color:#3a3e41;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.item .menuBtn {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  font-size: 14px;
+  color: #80868b;
+  cursor: pointer;
+  line-height: 4px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.item .menuBtn:hover {
+  color: #000000;
+}
+.item:hover .menuBtn {
+  display: flex;
+}
+.item .menu {
+  width: 100%;
+  padding: 6px 0;
+  min-height: 36px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  box-shadow: 0 0 10px #999999;
+  position: absolute;
+  top:6px;
+  left:0;
+  z-index: 1;
+}
+.item .menu>div{
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: #202124;
+}
+.item .menu>div:hover{
+  background-color: #999999;
+}
+
+.modalBg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top:0;
+  left:0;
+  background-color: rgba(255,255,255,0.3);
+  z-index: 9;
+}
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.additem {
+  width: 316px;
+  height: 232px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -166px 0 0 -158px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 0 10px #999999;
+  padding: 14px;
+}
+.additem .title{
+  width: 100%;
+  height: 28px;
+  float:left;
+  line-height: 28px;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color:#202124;
+}
+.additem .row{
+  width: 100%;
+  height: 64px;
+  float: left;
+}
+.additem .label{
+  width: 100%;
+  height: 16px;
+  float: left;
+  line-height: 16px;
+  font-size: 12px;
+  color: #5f6368;
+}
+.additem .inputbox{
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  font-size: 14px;
+  color: #202124;
+  background-color: #f1f3f4;
+  border-radius: 3px;
+  padding: 0 10px;
+  float: left;
+}
+.additem .error{
+  width: 100%;
+  height: 16px;
+  float: left;
+  line-height: 16px;
+  font-size: 12px;
+  color: #ff0000;
+}
+.additem .btnsBg{
+  width: 100%;
+  height: 30px;
+  margin-top:15px;
+  float: left;
+}
+.additem .btnsBg button{
+  min-width: 54px;
+  height: 30px;
+  outline: none;
+  background-color: #ffffff;
+  border: 1px #dadce0 solid;
+  border-radius: 2px;
+  color: #1a73e8;
+  font-size: 12px;
+  padding: 0 14px;
+  margin-left: 10px;
+  cursor: pointer;
+  float: right;
+}
+.additem .btnsBg button:disabled{
+  background-color: #f1f3f4;
+  border-color: #f1f3f4;
+  color: #80868b;
+  cursor: default;
+}

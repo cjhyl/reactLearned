@@ -1,0 +1,20 @@
+One unhandled runtime error found in your files. See the list below to fix it:
+
+
+Error in function useStaticQuery in ./.cache/gatsby-browser-entry.js:77
+The result of this StaticQuery could not be fetched. This is likely a bug in Gatsby and if refreshing the page does not fix it, please open an issue in https://github.com/gatsbyjs/gatsby/issues
+
+./.cache/gatsby-browser-entry.js:77
+Open in Editor
+ 75 |     return context[query].data
+  76 |   } else {
+> 77 |     throw new Error(
+     |          ^
+  78 |       `The result of this StaticQuery could not be fetched.\n\n` +
+  79 |         `This is likely a bug in Gatsby and if refreshing the page does not fix it, ` +
+  80 |         `please open an issue in https://github.com/gatsbyjs/gatsby/issues`
+
+最终，经过各种猜测，尝试，问题处理了，但不知道原因。
+问题修复于路径中header大小写的问题上，总体就是文件名首字母大写，路径中为小写，又调用了useStaticQuery的情况下，报错了。但又不是简单的路径大小写，因为它应该是不区分大小写的，在不调用useStaticQuery时，组件得运行是正常的，如果路径有问题的话，应该是组件调用都有错误得吧。
+而且看教程中示例的运行也是正常的，可能也有环境、版本的因素吧。
+不管了，这关过了就继续下面的学习了。

@@ -1,0 +1,119 @@
+一、React Query：
+使React应用获取，缓存，同步和更新服务器端状态变得更轻松。
+1. 请求管理
+在适当时机自动向服务端发送请求以同步状态。适当时机指当请求出错、网络重新连接、浏览器窗口重新获取焦点时。
+它是基于请求库上层的封装，实现了和请求相关的逻辑，比如无限加载、失败重试、轮询、请求状态查询等。
+它不生产请求，它只是请求的搬运工
+2. 状态管理
+把服务器状态同步到客户端的内存中进行缓存，任何组件都可以从缓存中获取状态，从而实现全局状态共享。
+下载：yarn add react-query@3.16.0
+
+二、状态模拟：
+1. 本地安装状态模拟工具 yarn add json-server
+2. 创建db.json 本地状态库，里面写入JSON数据
+3. 在package.son中添加命令:
+"script": {
+  "json-server":"json-server --watch db.json --port 3001"
+}
+4. 启动程序 npm run json-server
+
+三、全局配置：
+1. React Query会在客户端的内存中缓存状态，任何组件都可以从缓存中获取状态。
+2. 组件可以通过queryClient对象操作内存中的缓存状态。
+3. 开发者需要在应用的入口文件中通过QueryClient类创建queryClient对象
+4. 开发者需要通过QueryClientProvider组件将queryClient对象传递到下层组件。
+5. 组件通过useQueryClient钩子函数获取queryClient对象
+
+import ReactDOM from 'react-dom'
+import App from './app'
+import axios from 'axios'
+import { QueryCLient, QueryClientProvider } from 'react-query'
+
+// 响应拦截器，让开发者直接获取到服务器端返回的数据
+axios.interceptors.response.use(response => response.data)
+axios.defaults.baseURL = 'http://localhost:3001'
+
+// 创建queryClient对象
+const queryClient = new QueryClient()
+
+ReactDOM.render(
+  <QueryClientProvider client={queryClient}>
+    <App />
+  </QueryClientProvider>,
+  document.getElementById('root')
+)
+
+四、useQuery同步服务端状态
+1. 基本使用
+在组件挂载完成后发送请求获取状态，缓存状态。
+如获取服务器端默认待办事项列表。
+
+async function fetchTodos () {
+  try {
+    return axios.get('/todos')
+  } catch (err) {
+    throw new Error('服务端待办事项加载失败')
+  }
+}
+
+function 组件() {
+  const {isLoading, isError, error, data} = useQuery('todos',fetchTodos)
+
+  if(isLoading) return <div>正在读取...</div>
+  if(isError) return <div>读取错误：{error.message}</div>
+  return (
+    根据data渲染组件内容
+  )
+}
+2. 配置选项
+retry:失败重试
+refetchOnWindowFocus:浏览器重新获取焦点时
+enabled:组件挂载完成后
+staleTime:状态保质期，决定从缓存获取，还是重新请求获取
+placeholderData:在没有请求到数据前的默认数据
+refetchInterval:轮询时间间隔
+3. queryKey
+用于传递服务参数，如
+function getDataById({queryKey}){
+  return axios.get(`/todos/${queryKey[1]}`)
+}
+function FetchTodoById(){
+  const {data} = useQuery(["todo", 2], getTOdoById)
+}
+
+
+五、useMutaition更改状态：
+1. 在事件中调用请求，同步服务端缓存
+import {useQueryClient} from 'react-query'
+const queryClient = useQueryClient()
+function addTodo(todo){
+  return axios.post("/todos",todo)
+}
+const {mutate} = useMutaition(addTodo,{
+  onSuccess() {
+    //使本地缓存中的todos缓存无效，重新发送请求同步状态
+    queryClient.invalidateQueries('todos')
+  }
+})
+<div onClick={() => mutate({xxx})}></div>
+
+2. 同步客户端缓存
+function changeCompleted({id,isCompleted}) {
+  return axios.patch(`/todos/${id}`, {isComplated})
+}
+
+function 组件({todo}) {
+  const { mutate } = useMutaition(changeCompleted, {
+    onSucces(response) {
+      queryClient.setQueryData('todos', data => data.map(todo => (todo.id == response.id ? todo : response)))
+    }
+  })
+  组件中触发事件
+  <div onClick={()=> mutate(todo数据)}></div>
+}
+
+六：useQuery同步客户端状态，实现全局状态共享
+七：QueryObserver状态订阅
+八：useQUeries并发同步状态
+九：useInfiniteQuery分页
+十：uselsFetching全局加载状态

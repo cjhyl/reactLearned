@@ -1,0 +1,4 @@
+ReactDOM.hydrate(<App />, document.querySelector("#root"))
+hydrate方法作用是：对组件进行渲染，为组件元素附加事件。
+与render方法的区别是会复用已存在的DOM节点，减少重新生成节点以及删除原本DOM节点的开销。
+对服务器返回的ssr html进行二次渲染，它比render方法更适用。

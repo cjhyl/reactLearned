@@ -1,0 +1,9 @@
+数据源插件负责从gatsby应用外部获取数据，创建数据查询节点供开发者使用
+
+1. gatsby clean清除上一次的构建内容
+2. 在项目根目录下创建plugins文件夹，在此文件夹中继续创建具体的插件文件夹，如gatsby-source-mystrapi
+3. 在插件文件夹中创建gatsby-node.js文件
+4. 插件实际上就是npm包
+5. 导出sourceNode方法用于获取外部数据，创建数据查询节点
+6. 在gatsby-config.js文件中配置插件，并传递插件所需的配置参数
+7. 重新运行应用

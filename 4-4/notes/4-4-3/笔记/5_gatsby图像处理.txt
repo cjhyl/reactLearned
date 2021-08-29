@@ -1,0 +1,72 @@
+图像处理解决的问题：
+1. 图像文件和数据文件不在源代码同一位置
+2. 图像路径基于构建站点的绝对路径，而不是相对于数据的路径，难以分析出图片的真实位置
+3. 图像没有经过任何优化操作
+
+所用插件：
+gatsby-source-filesystem:把本地文件信息添加到数据层
+gatsby-plugin-sharp:提供本地图像处理功能(调整图想尺寸，压缩图像体积等)
+gatsby-transformer-sharp:把gatsby-plugin-sharp插件处理后的图像信息添加到数据层
+gatsby-image：React组件，优化图像显示，基于gatsby-transformer-sharp插件转化后的数据
+gatsby-iamge优化作用：
+1. 生成多个不同宽度的图像版本，为图像设置srcset和sizes属性，根据设备不同宽度加载合适大小的图片
+2. 使用模糊处理技术，其中将一个20px宽的小图像显示为占位符，知道实际图像下载完成为止。
+
+npm install gatsby-plugin-sharp gatsby-transformer-sharp gatsby-image
+
+图片数据查询示例：
+// 只查图像信息
+query {
+  allImageSharp {
+    nodes {
+      fluid {
+        sizes
+        src
+        srcSet
+        aspectRatio
+      }
+    }
+  }
+}
+// 在产品信息中查询关联图像信息
+query {
+  allProductsJson {
+    nodes {
+      address
+      price
+      title
+      url {
+        childImageSharp {
+          fluid {
+            src
+            srcSet
+            sizes
+            aspectRatio
+          }
+        }
+      }
+    }
+  }
+}
+
+// 指定图像尺寸的查询方式
+query {
+  allProductsJson {
+    nodes {
+      address
+      price
+      title
+      url {
+        childImageSharp {
+          fixed(width: 200, height: 200) {
+            height
+            width
+            src
+            srcSet
+          }
+        }
+      }
+    }
+  }
+}
+`

@@ -1,0 +1,15 @@
+要使用gatsby，首先要全局安装其脚手架：
+npm install gatsby-cli -g
+
+然后创建项目：
+gatsby new project-name https://github.com/gatsby-starter-hello-world
+启动：gatsby develop或npm start
+访问：localhost:8000
+
+错误处理：
+最新的模板地址变了：
+gatsby new guide https://github.com/gatsbyjs/gatsby-starter-hello-world
+还有出现了错误
+ Error: Command failed with exit code 128: git clone https://github.com/gatsbyjs/gatsby-starter-hello-world.git guide -
+  -recursive --depth=1
+之前git clone有残留粘贴板，需要regedit，搜索cloneDir删除掉

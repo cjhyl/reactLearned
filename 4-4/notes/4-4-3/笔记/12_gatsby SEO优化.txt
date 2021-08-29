@@ -1,0 +1,5 @@
+react-helmet是一个组件，用于控制页面元数据，这对于SEO非常重要.
+此插件用于将页面元数据添加到gatsby构建的静态HTML页面中.
+
+安装：
+npm install gatsby-plugin-react-helmet react-helmet

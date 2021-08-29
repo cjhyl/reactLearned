@@ -1,0 +1,9 @@
+1. 把项目提交到github仓库
+2. 使用github账号登录vercel
+3. 点击import project
+4. 点击import Git Repository卡片的Continue按钮
+5. 输入github仓库地址，点击Continue按钮
+6. 选择Only select repositories，选中项目仓库，点击installing按钮
+7. 下一个面板中点击Deploy按钮
+8. 等待部署
+9. 部署成功，可点击visit按钮访问

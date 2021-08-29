@@ -1,0 +1,12 @@
+下载插件：
+npm install --save gatsby-plugin-less
+配置插件：
+plugins:["gatsby-plugin-less"]
+创建样式：
+index.module.less
+引入样式：
+import styles from './index.module.less'
+
+按照教程操作后，在import的时候出问题了，styles为null，或许又是版本问题，指定教程中的版本再安装。
+npm install gatsby-plugin-less@4.0.3
+教程中的版本再npm start的时候报错，再恢复最新版本吧。

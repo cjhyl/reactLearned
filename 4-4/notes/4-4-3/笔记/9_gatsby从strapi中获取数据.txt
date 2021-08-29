@@ -1,0 +1,31 @@
+1. 安装插件：gatsby-source-strapi
+npm install gatsby-source-strapi
+2. 配置插件，示例：
+    {
+      resolve: "gatsby-source-strapi",
+      options: {
+        apiUrl: "http://localhost:1337",
+        contentTypes: ["Post"],
+      },
+    }
+因为版本问题，gatsby-source-strapi配置方式有改变，不止contentTypes变成了collectionTypes，而且请求时参数_limit导致请求失败。
+info Starting to fetch data from Strapi - localhost:1337/posts with params {"_limit":100}
+
+ ERROR
+
+Failed to fetch data from Strapi getaddrinfo ENOTFOUND 1337
+安装教程版本的gatsby-source-strapi
+npm uninstall gatsby-source-strapi
+npm install gatsby-source-strapi@0.0.12
+运行正常，数据中出现了strapiPost
+graphql请求示例：
+query MyQuery {
+  allStrapiPost {
+    nodes {
+      title
+      date
+      content
+    }
+  }
+}
+

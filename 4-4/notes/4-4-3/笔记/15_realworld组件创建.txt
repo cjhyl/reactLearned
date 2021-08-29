@@ -1,0 +1,10 @@
+realworld页面资源文档：
+github.com/gothinkster/realworld-starter-kit/blob/master/FRONTEND_INSTRUCTIONS.md
+
+vscode可安装html to JSX插件，用于转换普通html为jsx
+
+页面设置：
+复制.cache文件夹下面的default-html.js到src文件夹下，重命名为html.js(固定名称)，然后在其中处理页面html设置。
+
+页面统一布局设置：
+在根目录创建gatsby-browser.js，该js内容会在客户端运行时调用，此处代码需要遵循nodejs的commonjs规范。

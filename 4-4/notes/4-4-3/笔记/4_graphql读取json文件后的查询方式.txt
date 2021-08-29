@@ -1,0 +1,33 @@
+文件信息查询：
+{
+  allFile {
+    nodes {
+      absolutePath
+      ext
+    }
+  }
+}
+所有读取了的文件->节点->绝对路径、扩展名
+
+读取了的products.json文件中的数据查询：
+查询所有：
+query MyQuery {
+  allProductsJson {
+    nodes {
+      url
+      title
+      price
+      address
+    }
+  }
+}
+单独查询：
+query MyQuery {
+  productsJson {
+    title
+    price
+    address
+    url
+  }
+}
+

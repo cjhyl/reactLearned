@@ -1,0 +1,7 @@
+useEffect()作用：让函数型组件拥有处理副作⽤的能⼒. 类似⽣命周期函数.
+
+1. useEffect 执⾏时机
+可以把 useEffect 看做 componentDidMount, componentDidUpdate 和 componentWillUnmount 这三个函数的组合.
+useEffect(() => {}) => componentDidMount, componentDidUpdate
+useEffect(() => {}, []) => componentDidMount
+useEffect(() => () => {}) => componentWillUnMount

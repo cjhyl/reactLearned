@@ -1,0 +1,10 @@
+.tooltip.tooltip-error.right{
+  left: 100%;
+  top:50%;
+  transform: translateY(-50%);
+}
+.tooltip.tooltip-error.middle{
+  left: 50%;
+  top:50%;
+  transform: translate(-50%, -50%);
+}

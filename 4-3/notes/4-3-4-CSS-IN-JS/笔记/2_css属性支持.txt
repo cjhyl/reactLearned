@@ -1,0 +1,19 @@
+让react支持css属性
+
+方法1：. JSX Pragma
+通知 babel, 不再需要将 jsx 语法转换为 React.createElement ⽅法, ⽽是需要转换为 jsx ⽅法. 
+
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
+
+方法2：Babel Preset
+1. npm run eject
+2. 在 package.json ⽂件中找到 babel 属性, 加⼊如下内容
+"presets": [
+	"react-app",
+	"@emotion/babel-preset-css-prop"
+]
+
+实施方法1时，报错，但不知道错误原因。
+实施方法2时，报错，提示没有@emotion/react，安装后能正常运行了。
+应该是版本升级后导致的问题。

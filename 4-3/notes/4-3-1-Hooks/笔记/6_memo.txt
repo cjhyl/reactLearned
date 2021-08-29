@@ -1,0 +1,2 @@
+memo()作用：
+性能优化, 如果本组件中的数据没有发⽣变化, 阻⽌组件更新. 类似类组件中的 PureComponent 和 shouldComponentUpdate

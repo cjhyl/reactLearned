@@ -1,0 +1,17 @@
+Style Props 是⽤来更改组件样式的, 通过为组件传递属性的⽅式实现. 通过传递简化的样式属性以达到提升开发效率的⽬的.
+样式属性 css属性 主题
+m, margin margin space
+mx margin-left & margin-right space
+p, padding padding space
+py padding-top & padding-botton space
+bg background colors
+bgColor background-color colors
+color color colors
+border border borders
+textAlign text-align none
+w, width width sizes
+boxSize width & height sizes
+d, display display none
+pos, position position none
+left left space
+shadow, boxShadow box-shadow shadows

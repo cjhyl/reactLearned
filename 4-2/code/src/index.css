@@ -1,0 +1,176 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  outline: none;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: pointer;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.bg{
+	width: 500px;
+	min-height: 320px;
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%, -50%);
+  border: 1px #dcdcdc solid;
+  padding: 20px 14px;
+  background-color: #fefefe;
+}
+.bg>div{
+  width: 100%;
+  min-height:280px;
+  border: 1px #dcdcdc solid;
+  border-radius: 3px;
+}
+.title{
+  width:100%;
+  height:61px;
+  border-bottom: 1px #dcdcdc dashed;
+  text-align: center;
+  line-height: 60px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #266897;
+  float:left;
+}
+.infos{
+  width:100%;
+  height:83px;
+  border-bottom: 1px #dcdcdc dashed;
+  float:left;
+}
+.infos>div{
+  width:49.9%;
+  height:82px;
+  padding:11px 8px;
+  float:left;
+}
+.infos .name,
+.infos .info{
+  width:100%;
+  height:30px;
+  line-height:30px;
+  float:left;
+}
+.infos .name{
+  font-size:14px;
+  color:#266897;
+  font-weight:bold;
+}
+.infos .info{
+  font-size:18px;
+  color:#000000;
+}
+.pickedList{
+  width:100%;
+  padding: 20px 24px;
+  max-height:284px;
+  overflow-y: auto;
+  float:left;
+}
+.pickedList .noneTips{
+  width: 100%;
+  height:40px;
+  line-height: 40px;
+  text-align: center;
+  color: #cbcbcb;
+  font-size: 14px;
+  font-weight: bold;
+}
+.appleInfo{
+  width:100%;
+  height:78px;
+  border:1px #dcdcdc solid;
+  border-radius: 3px;
+  margin-bottom:10px;
+  display: flex;
+  float:left;
+}
+.pickedList .appleInfo:last-child{
+  margin-bottom: 0;
+}
+.appleInfo>div{
+  height:76px;
+  align-items: center;
+  display:flex;
+}
+.appleInfo .img{
+  width:68px;
+}
+.appleInfo .info{
+  flex:1;
+  flex-direction: column;
+  justify-content: center;
+}
+.appleInfo .info>div{
+  width:100%;
+  height:30px;
+  line-height: 30px;
+}
+.appleInfo .info .name{
+  font-size: 20px;
+  font-weight: bold;
+  color: #266897;
+}
+.appleInfo .info .weight{
+  font-size: 16px;
+  color: #000000;
+}
+.appleInfo .img>img{
+  width:50px;
+  height:50px;
+}
+.appleInfo .btn{
+  width:94px;
+}
+.eatBtn{
+  width:76px;
+  background-color: #4b9ad7;
+  color:#ffffff;
+  display:inline-block;
+}
+.eatBtn:hover{
+  background-color: #6dadde;
+}
+.btnBg{
+  width:100%;
+  padding:20px 0;
+  font-size:0;
+  text-align: center;
+  clear:both;
+}
+.pickBtn{
+  width:142px;
+  background-color: #489364;
+  color:#ffffff;
+  display:inline-block;
+}
+.pickBtn:hover{
+  background-color: #80d18b;
+}
+.pickBtn:disabled{
+  background-color: #bbc3c4;
+  cursor:default;
+}

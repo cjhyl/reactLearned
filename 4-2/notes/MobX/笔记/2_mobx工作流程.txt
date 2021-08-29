@@ -1,0 +1,5 @@
+安装mobx
+npm install mobx mobx-react
+
+mobx工作流程
+Action->State->Views

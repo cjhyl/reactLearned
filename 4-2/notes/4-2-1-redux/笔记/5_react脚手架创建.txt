@@ -1,0 +1,13 @@
+# 全局安装
+npm install -g create-react-app
+# 构建一个my-app的项目
+npx create-react-app my-app
+
+
+npm
+# npm init <initializer> is available in npm 6+
+npm init react-app my-app
+
+Yarn
+# yarn create is available in Yarn 0.25+
+yarn create react-app my-app

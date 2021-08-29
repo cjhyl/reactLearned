@@ -1,0 +1,19 @@
+mobx相关库：
+mobx：MobX 核心库
+mobx-react-lite：仅支持函数组件
+mobx-react：既支持函数组件也支持类组件
+本次教程只使用函数组件，使用mobx和mobx-react-lite库
+
+核心概念：
+1. observable state：被 MobX 跟踪的状态。
+2. action：允许修改状态的方法，在严格模式下只有 action 方法被允许修改状态。
+3. computed：根据应用程序状态派生的新值，计算值。
+
+工作流程：
+页面触发action-> observable state->computed values->更新dom
+
+mobx6使用总结：
+状态变化更新视图的必要条件
+1. 状态需要被标记为 `observable state`
+2. 更改状态的方法需要被标记为 `action` 方法
+3. 组件视图必须通过 `observer` 方法包裹

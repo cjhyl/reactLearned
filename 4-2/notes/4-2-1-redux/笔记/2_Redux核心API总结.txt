@@ -1,0 +1,10 @@
+// 创建 Store 容器
+var store = Redux.createStore(reducer)
+// 处理状态的 reducer 函数
+function reducer (state = initState, action) {}
+// 获取状态
+store.getState();
+// 订阅状态
+store.subscribe(function () {});
+// 触发Action
+store.dispatch({type: 'do sth...'})

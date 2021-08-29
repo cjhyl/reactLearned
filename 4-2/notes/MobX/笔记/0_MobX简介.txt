@@ -1,0 +1,10 @@
+定义：
+MoboX是React的状态管理库，作用和Redux一样，但相比Redux使用更加简单，没有复杂的工作流程，没有过多的样板代码。
+背景：
+由Mendix，Coinbase(比特币公司)，Facebook 开源和众多个人赞助商所赞助的。
+浏览器支持：
+MobX 5 版本运行在任何支持 ES6 proxy 的浏览器，不支持 IE11，Node.js 6
+MobX 4 可以运行在任何支持 ES5 的浏览器上
+MobX 4 和 5的 API 是相同的
+
+

@@ -1,0 +1,15 @@
+1、@reduxjs/toolkie
+简化Redux中样板代码流程代码的编写，对Redux进行二次封装，使Redux的使用变得简单。
+2、immutable.js，提供不可变数据结构，1、防止数据突变，2、提升数据操作性能
+Redux要求全局状态具有不可变性
+React要求本地组件状态具有不可变性
+
+数据突变：
+js中对象为引用类型，操作一个对象会引发另一个对象的变化。
+
+数据不可变：
+操作新数据不影响老数据
+sort、splice、push、pop属于数据突变
+map、filter、reduce、slice属于数据不可变
+
+immutable.js和React配合可以提升性能，优化diff

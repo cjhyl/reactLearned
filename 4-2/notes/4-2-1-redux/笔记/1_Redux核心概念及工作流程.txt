@@ -1,0 +1,8 @@
+核心概念：
+Store：存储状态的容器，JavaScript对象
+View: 视图，HTML⻚⾯
+Actions: 对象，描述对状态进⾏怎样的操作
+Reducers：函数，操作状态并返回新的状态
+
+工作流程：
+view触发（dispatch）action，然后被reducer接受到，reducer进行处理后，把新的状态更新到store，store再把最新的状态更新到view（调用subscribe）

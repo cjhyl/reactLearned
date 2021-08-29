@@ -1,0 +1,4 @@
+1、目前最新版本为 6，版本 4 和版本 5 已不再支持。
+2、在 MobX 6 中不推荐使用装饰器语法，因为它不是 ES 标准，并且标准化过程要花费很长时间，但是通过配置仍然可以启用装饰器语法。
+3、MobX 可以运行在任何支持 ES5 的环境中，包含浏览器和 Node。
+4、MobX 通常和 React 配合使用，但是在 [Angular](https://github.com/mobxjs/mobx-angular) 和 [Vue](https://github.com/mobxjs/mobx-vue) 中也可以使用 MobX

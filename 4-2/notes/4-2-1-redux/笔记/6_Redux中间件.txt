@@ -1,0 +1,21 @@
+﻿Redux中间件是一个函数，工作流程处于Action与Reducer之间，是额外的处理流程，通过增强Action的处理能力，扩展和增强了Redux程序。
+Redux中间件是柯里化函数，执行顺序是从左至右。
+Redux-saga中间件插件，把异步操作从Action Creator文件中抽离出来，放在一个单独的文件中。
+Redux-actions中间件插件，作用是简化Action和Reducer的处理。
+Redux-actions使用示例：
+简化action：
+import { createAction } from 'redux-actions';
+
+const increment_action = createAction('increment');
+const decrement_action = createAction('decrement');
+简化reducer：
+import { handleActions as createReducer } from 'redux-actions';
+import { increment_action, decrement_action } from '../actions/counter.action';
+
+const initialState = {count: 0};
+// 在使用时如果传入参数，这里由action直接接收，不用在action.js中定义
+const counterReducer = createReducer({
+  [increment_action]: (state, action) => ({count: state.count + 1}),
+  [decrement_action]: (state, action) => ({count: state.count - 1})
+}, initialState)
+

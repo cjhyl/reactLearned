@@ -1,0 +1,12 @@
+| 依赖项                 | 描述                                               |
+| ---------------------- | -------------------------------------------------- |
+| webpack                | 模块打包工具                                       |
+| webpack-cli            | 打包命令                                           |
+| webpack-node-externals | 打包服务器端模块时剔除 node_modules 文件夹中的模块 |
+| @babel/core            | JavaScript 代码转换工具                            |
+| @babel/preset-env      | babel 预置，转换高级 JavaScript 语法               |
+| @babel/preset-react    | babel 预置，转换 JSX 语法                          |
+| babel-loader           | webpack 中的 babel 工具加载器                      |
+| nodemon                | 监控服务端文件变化，重启应用                       |
+| npm-run-all            | 命令行工具，可以同时执行多个命令                   |
+| express                | 基于 node 平台的 web 开发框架                      |

@@ -1,0 +1,3 @@
+React 是一个用于构建用户界面的 JavaScript 库，它只负责应用的视图层(all in javascript，构建界面、样式都使用javascript)，帮助开发人员构建快速(各种优化)且交互式(界面和逻辑没有区分)的 web 应用程序。
+React 
+React 使用组件的方式构建用户界面。

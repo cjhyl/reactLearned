@@ -1,0 +1,74 @@
+vue项目优化：
+
+代码优化：
+
+1. v-if和v-show区分使用场景
+v-if会在切换时进行Dom元素、事件、子组件的销毁与重建。
+v-show只是display属性的切换。
+v-if适用于不需要频繁切换的场景，v-show相反。
+
+2. 多使用计算属性
+computed拥有缓存特性，只有依赖的属性值改变，下次获取的computed值才会重新计算，这样，可避免每次获取值时，都要重新计算，性能更好。
+
+计算属性的set的使用场景示例：
+<input type="checkbox" v-model="toggleAll" />
+全选功能：getter(点击子项目)，setter(点击全选)
+
+3. v-for遍历避免使用v-if
+v-for优先级比v-if高，当两个指令出现在同一个DOM中时，那么v-for渲染列表时，每次都会进行v-if判断，响应列表也会重新变化。
+合理的做法是使用计算属性，把v-if不需要的值过滤掉，例：
+computed: {
+  filterList: function () {
+    return this.listData.filter(function (data) {
+      return data.isShow
+    })
+  }
+}
+
+4. v-for遍历为item添加key，让遍历更高效、准确
+
+5. 禁止vue双向绑定机制，可以使用Object.freeze冻结该对象数据
+
+6. 无限列表性能优化
+只展示用户看的那部分，类似懒加载模式，使用vue-virtual-scroller、vue-virtual-scroll-list库
+原理类似：https://github.com/vuejs/awesome-vue#infinite-scroll
+https://github.com/vuejs/awesome-vue是官方收集的很多优秀的教程、项目、框架、库之类的。
+搜索github awesome xxx(react jquery vue...)寻找优秀资源
+
+7. 释放组件资源
+自己添加的一些资源（例如对dom的事件绑定），在组件销毁时记得释放。
+
+8. 图片资源优化：
+小图标使用svg或字体图表
+使用base64和webp方式加载小图标
+能通过cdn加速的大图尽量用cdn
+图片懒加载
+压缩图片大小
+  静态图片，建议使用统一工具压缩，例如tinypng等工具
+  压缩图片不建议使用webpack，这将严重影响打包速度。
+  动态图片，如用户创建的图片，建议后端压缩。
+
+9. 路由懒加载
+在访问该路由时才加载对应组件，使用示例：
+// require 语法
+component: resolve => (require(['@/views/error-page/403.vue'],resolve))
+// import 语法
+component: () => import(/* webpackChunkName: '403' */ '@/views/error-page/403.vue')
+// 懒加载卤藕就是异步组件，太多的话，会导致打包性能问题
+
+10. 第三方组件库的按需引入
+引入UI框架如Element, And Design等时，使用官方暴露出来的按需加载组件，可以优化加载的组件资源冗余
+lodash按需加载：
+import xxx from 'lodash/xxx'
+
+11. 首屏渲染优化
+路由懒加载
+首页loading
+服务端渲染，仅仅因为首屏渲染慢，其实也不建议引入服务端渲染，成本还是比较高的，除非需要解决SEO。
+预渲染 没什么动态数据的页面直接预渲染成静态页面
+
+12. webpack构建优化
+升级Vue Cli
+参考：https://cli.vuejs.org/zh/guide/installation.html#%E5%8D%87%E7%BA%A7
+  升级Vue Cli
+  升级项目依赖

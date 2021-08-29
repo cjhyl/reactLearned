@@ -1,0 +1,232 @@
+1. 定义：
+React 是基于组件的方式进行用户界面开发的. 组件可以理解为对页面中某一块区域的封装。
+
+2. 创建组件：
+
+2.1 创建类组件
+import React, { Component } from 'react';
+class App extends Component {
+    render () {
+        return <div>Hello, 我是类组件</div>
+    }
+}
+
+2.2 创建函数组件
+const Person = () => {
+     return <div>Hello, 我是函数型组件</div>;
+}
+**注意事项**
+1. 组件名称首字母必须大写，用以区分组件和普通标签。
+2. jsx语法外层必须有一个根元素
+
+3. 组件 props：
+
+3.1 props 传递数据
+在调用组件时可以向组件内部传递数据，在组件中可以通过 props 对象获取外部传递进来的数据。
+<Person name="乔治" age="20"/>
+<Person name="玛丽" age="10"/>
+// 类组件
+class Person extends Component {
+  render() {
+    return (
+      <div>
+        <h3>姓名：{this.props.name}</h3>
+        <h4>年龄：{this.props.age}</h4>
+      </div>
+    );
+  }
+}
+// 函数组件
+const Person = props => {
+  return (
+    <div>
+      <h3>姓名：{props.name}</h3>
+      <h4>年龄：{props.age}</h4>
+    </div>
+  );
+}
+**注意：**
+1. props 对象中存储的数据是只读的，不能在组件内部被修改。
+2. 当 props 数据源中的数据被修改后，组件中的接收到的 props 数据会被同步更新。( 数据驱动DOM )
+
+3.2 设置 props 默认值
+// 类组件
+class App extends Component {
+    static defaultProps = {}
+}
+// 函数组件
+function ThemedButton(props) {
+}
+ThemedButton.defaultProps = {
+  theme: "secondary",
+  label: "Button Text"
+};
+
+3.3 组件 children
+通过 props.children 属性可以获取到在调用组件时填充到组件标签内部的内容。
+<Person>组件内部的内容</Person>
+const Person = (props) => {
+    return (
+    	<div>{props.children}</div>
+    );
+}
+
+3.4 单向数据流
+1.  在React中, 关于数据流动有一条原则, 就是单向数据流动, 自顶向下, 从父组件到子组件.
+2.  单向数据流特性要求我们共享数据要放置在上层组件中.
+3.  子组件通过调用父组件传递过来的方法更改数据.
+4.  当数据发生更改时, React会重新渲染组件树.
+5.  单向数据流使组件之间的数据流动变得可预测. 使得定位程序错误变得简单.
+
+4. 类组件状态 state
+
+4.1 定义组件状态
+类组件除了能够从外部 (props) 接收状态数据以外还可以拥有自己的状态 (state)，此状态在组件内部可以被更新，状态更新 DOM 更新。
+组件内部的状态数据被存储在组件类中的 state 属性中，state 属性值为对象类型，属性名称固定不可更改。
+class App extends Component {
+  constructor () {
+    super()
+    this.state = {
+      person: { name: '张三', age: 20 },
+    }
+  }
+  render () {
+    return (
+      <div>
+        {this.state.person.name}
+        {this.state.person.age}
+      </div>
+    );
+  }
+}
+
+4.2 更改组件状态
+state 状态对象中的数据不可直接更改，如果直接更改 DOM 不会被更新，要更改 state 状态数据需要使用 setState方法。
+class App extends Component {
+  constructor () {
+    this.state = {
+      person: { name: '张三', age: 20 },
+    }
+    this.changePerson = this.changePerson.bind(this)
+  }
+	changePerson () {
+    this.setState({
+      person: {
+        name: '李四',
+        age: 15
+      }
+    })
+  }
+  render() {
+    return (
+      <div>
+        {this.state.person.name}
+        {this.state.person.age}
+        <button onClick={this.changePerson}>按钮</button>
+      </div>
+    );
+  }
+}
+
+4.3 双向数据绑定
+双向数据绑定是指，组件类中更新了状态，DOM 状态同步更新，DOM 更改了状态，组件类中同步更新。组件 <=> 视图。
+要实现双向数据绑定需要用到表单元素和 state 状态对象。
+class App extends Component {
+  constructor () {
+    this.state = {
+      name: "张三"
+    }
+    this.nameChanged = this.nameChanged.bind(this)
+  }
+  nameChanged (event) {
+    this.setState({name: event.target.value});
+  }
+  render() {
+    return (
+      <div>
+        <div>{this.state.name}</div>
+        <Person name={this.state.name} changed={this.nameChanged}/>
+      </div>
+    )
+  }
+}
+const Person = props => {
+	return <input type="text" value={props.name} onChange={props.changed}/>;
+}
+
+5. 组件生命周期钩子函数
+Mounting：
+constructor->getDerivedStateFromProps->Render->React updates Dom and refs->componentDidMount
+Updating：
+getDerivedStateFromProps->shuldComponentUpdate->Render->getSnapshotBeforeUpdate->React updates Dom and refs->componentDidUpdate
+Unmounting：
+componentWillUnmount
+在组件完成更新之前需要做某种逻辑或者计算，就需要用到快照
+componentDidUpdate(prevProps, prevState, snapshot) {}
+
+getSnapshotBeforeUpdate 方法会在组件完成更新之前执行，用于执行某种逻辑或计算，返回值可以在 componentDidUpdate 方法中的第三个参数中获取，就是说在组件更新之后可以拿到这个值再去做其他事情。
+getSnapshotBeforeUpdate(prevProps, prevState) {
+  return 'snapshot'
+}
+
+6. Context
+通过 Context 可以跨层级传递数据
+使用示例：
+// userContext.js
+import React from "react"
+
+const userContext = React.createContext("default value")
+// 数据写入
+const UserProvider = userContext.Provider
+// 数据读取
+const UserConsumer = userContext.Consumer
+
+export { UserProvider, UserConsumer }
+
+// App.js
+import { UserProvider } from "./userContext"
+class App extends Component {
+  render() {
+    return (
+      <UserProvider value="Hello React Context">
+        <A />
+      </UserProvider>
+    )
+  }
+}
+
+// C.js
+import { UserConsumer } from "./userContext"
+
+export class C extends Component {
+  render() {
+    return (
+      <div>
+        <UserConsumer>
+          {username => {
+            return <div>{username}</div>
+          }}
+        </UserConsumer>
+      </div>
+    )
+  }
+}
+
+context 的另一种用法：
+
+// userContext.js
+export default userContext
+
+// C.js
+import userContext from "./userContext"
+
+export class C extends Component {
+  static contextType = userContext
+  render() {
+    return (
+      <div>
+        {this.context}
+      </div>
+    )
+  }
+}

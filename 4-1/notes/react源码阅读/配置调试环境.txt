@@ -1,0 +1,66 @@
+1. 使用 create-react-app 脚手架创建项目
+npx create-react-app react-test
+2. 弹射 create-react-app 脚手架内部配置
+npm run eject
+3. 克隆 react 官方源码(在项目的根目录下进行克隆)
+git clone --branch v16.13.1 --depth=1 https://github.com/facebook/react.git src/react
+4. 链接本地源码
+// 文件位置：react-test/config/webpack.config.js
+resolve: {
+  alias: {
+        "react-native": "react-native-web",
+        react: path.resolve(__dirname, "../src/react/packages/react"),
+        "react-dom": path.resolve(__dirname, "../src/react/packages/react-dom"),
+        shared: path.resolve(__dirname, "../src/react/packages/shared"),
+        "react-reconciler": path.resolve( __dirname, "../src/react/packages/react-reconciler"),
+        "legacy-events": path.resolve(__dirname, "../src/react/packages/legacy-events")
+      },
+}
+5. 修改环境变量
+// 文件位置：react-test/config/env.js
+const stringified = {
+    "process.env": Object.keys(raw).reduce((env, key) => {
+      env[key] = JSON.stringify(raw[key])
+      return env
+    }, {}),
+    __DEV__: true,
+    SharedArrayBuffer: true,
+    spyOnDev: true,
+    spyOnDevAndProd: true,
+    spyOnProd: true,
+    __PROFILE__: true,
+    __UMD__: true,
+    __EXPERIMENTAL__: true,
+    __VARIANT__: true,
+    gate: true,
+    trustedTypes: true
+  }
+6. 告诉 babel 在转换代码时忽略类型检查
+npm install @babel/plugin-transform-flow-strip-types -D
+// 文件位置：react-test/config/webpack.config.js [babel-loader]
+plugins: [
+  require.resolve("@babel/plugin-transform-flow-strip-types"),
+]
+7. 导出 HostConfig
+// 文件位置： /react/packages/react-reconciler/src/ReactFiberHostConfig.js
+8. 修改 ReactSharedInternals.js 文件
+// 文件位置： /react/packages/shared/ReactSharedInernals.js
+9. 关闭 eslint 扩展
+// 文件位置：react/.eslingrc.js [module.exports]
+10. 禁止 invariant 报错
+// 文件位置： /react/packages/shared/invariant.js
+11. eslint 配置
+// 在react文件夹中创建.eslint.json文件
+12. 修改 react react-dom 引入方式
+13. 解决 vsCode 中 flow 报错
+"javascript.validate.enable": false
+14. 可选配置
+如果vscode安装了prettier插件并且在保存react源码文件时右下角出现了错误，按照以下步骤解决：
+1. 全局安装prettier
+npm i prettier -g
+2. 配置 prettier path
+Settings>Extensions>Prettier>Prettier path
+把全局安装的Prettier路径填入
+15. __DEV__报错
+删除node_modules文件夹，执行npm install
+
